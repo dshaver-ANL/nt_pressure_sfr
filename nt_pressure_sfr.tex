@@ -1,0 +1,150 @@
+\documentclass[11pt,letterpaper,english]{article}
+%\documentclass[preprint,review,12pt]{elsarticle}
+% Page design
+\usepackage[top=1in, bottom=2in, left=1in, right=1in] {geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\center Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+% General packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{txfonts}
+\usepackage{xcolor}
+\usepackage{soul}
+%\usepackage{eqnarray}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{graphicx}
+\usepackage{mathptmx}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{setspace}
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{floatrow}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{hhline}
+\setlength\doublerulesep{.7pt}
+%\usepackage{tabularx}
+\usepackage{subcaption}
+
+\usepackage{dsfont}
+
+% Section format
+\usepackage{sectsty}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize \it}
+\usepackage{titlesec}
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{2}
+
+\titlespacing\section{0pt}{0\parskip}{0\parskip}
+\titlespacing\subsection{0pt}{0\parskip}{0\parskip}
+\titlespacing\subsubsection{0pt}{0\parskip}{0\parskip}
+\titleformat{\section}[block]{\normalfont\normalsize\bfseries}{\thesection .}{1em}{}
+\titleformat{\subsection}[block]{\normalfont\normalsize\bfseries}{\thesubsection .}{1em}{}
+\titleformat{\subsubsection}[block]{\normalfont\normalsize\bfseries}{\thesubsubsection .}{1em}{}
+
+% Bibliography format
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\bibliographystyle{humannat}
+\usepackage{doi}
+\renewcommand{\refname}{REFERENCES}
+\makeatletter
+%\renewcommand\@biblabel[1]{#1.\em}
+\makeatother
+\setlength{\bibsep}{0pt plus 0.3ex}
+
+% Captions
+\usepackage{caption}
+\captionsetup[figure]{labelfont={bf,normalsize},textfont={bf,normalsize},labelformat={default},labelsep=period,name={Figure}}
+
+% Tables
+\floatsetup[table]{capposition=top}
+\captionsetup[table]{labelfont={bf,normalsize},textfont={bf,normalsize},labelformat={default},labelsep=period,name={Table}}
+\renewcommand{\thetable}{\Roman{table}}
+\captionsetup[sub]{font={normalsize},labelfont={bf,normalsize}}
+
+% UDF
+\definecolor{brown}{RGB}{74,68,42}
+\newcommand{\tw}[1]{#1\textwidth}
+\newcommand{\lw}{\linewidth}
+\renewcommand{\eqref}[1]{(\ref{#1})}
+
+% Turning off highlighting
+%\renewcommand{\hl}[1]{#1}
+
+\begin{document}
+
+\vspace*{-0.45in}
+\begin{center}
+{\Large\centering\bf CFD Evaluation of Pressure Change along Coolant Passages in Sodium-cooled Fast Reactor using Nek5000}
+
+\vspace{3pt}
+
+\begin{spacing}{1}
+{\bf \large Jun Fang, Yiqi Yu, Haomin Yuan, Elia Merzari$^\dagger$, Dillon R. Shaver} \\
+\large \textit{Argonne National Laboratory, Lemont, IL 60439, USA} \\
+\large \textit{$^\dagger$Pennsylvania State University, State College, PA 16801, USA} \\
+{\color{brown} fangj@anl.gov (J. Fang), dshaver@anl.gov (D. Shaver)}
+\end{spacing}
+\vspace{10pt}
+
+\end{center}
+
+\normalsize
+
+\section*{ABSTRACT}
+
+To support the design of advanced Sodium-cooled Fast Reactor (SFR), a series of computational fluid dynamic (CFD) simulations are performed to investigate the pressure change along various flow passages in the proposed SFR system. The simulations are carried out with the state-of-the-art spectral element flow solver, Nek5000. Two specific case studies are presented in this paper: the flow exiting the axial neutron reflector channels and the flow entering the fuel pin bundle. Due to the high Reynolds numbers expected, RANS methods are necessary. A newly developed regularized $k-\omega$ RANS model is adopted in the related CFD calculations. The first case study explores the effect of Reynolds number on the pressure change when flow exiting the reflector channels. The pressure change in this case has two major contributors: the change due to wall friction and the Bernoulli effect. It is found out that the non-dimensional pressure change (i.e. pressure loss coefficient) reduces slightly as the Reynolds number increases. In the second case study, the advanced NekNek coupling capability is tested where an integral domain can be divided into multiple subdomains with an overlapping interface for flow information communication. The preliminary results obtained so far confirmed the consistency between the NekNek results and those produced by regular Nek5000 simulation. The presented work is part of the broader effort to apply cutting-edge CFD techniques in addressing the advanced nuclear reactor design challenges.
+
+
+\begin{flushleft}
+{\bf KEYWORDS} \\
+ CFD, Nek5000, Pressure Change, Sodium-cooled Fast Reactor
+\end{flushleft}
+
+\section{INTRODUCTION}
+
+
+
+%%---------------------------------------------------------------------------%%
+
+\input{nek.tex}
+\input{results.tex}
+
+%%---------------------------------------------------------------------------%%
+
+\section{CONCLUSIONS}
+
+
+
+\section*{Acknowledgments}
+
+This work was supported by the Nuclear Energy Advanced Modeling and Simulation (NEAMS) program of the U.S. Department of Energy, Office of Nuclear Energy, under contract No. DE-AC02-06CH11357. The authors gratefully acknowledge use of the computing resources provided on Bebop, a high-performance computing cluster operated by the Laboratory Computing Resource Center (LCRC) at Argonne National Laboratory. 
+
+
+\clearpage
+\bibliography{references}
+
+\clearpage
+\begin{center}
+\scriptsize
+\framebox{\parbox{2.6in}{The submitted manuscript has been created by UChicago Argonne, LLC, Operator of Argonne National Laboratory
+("Argonne").  Argonne, a U.S. Department of Energy Office of Science laboratory, is operated under Contract No. DE-AC02-06CH11357.  The U.S. Government retains for itself, and others acting on its behalf, a paid-up, nonexclusive, irrevocable worldwide license in said article to reproduce, prepare derivative works, distribute copies to the public, and perform publicly and display publicly, by or on behalf of the Government.}}
+\normalsize
+\end{center}
+
+
+\end{document}
